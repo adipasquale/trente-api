@@ -1,6 +1,6 @@
 class Guest < ApplicationRecord
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :photo, presence: true
   validates :browser_uuid, presence: true, uniqueness: true
   has_one_attached :photo
