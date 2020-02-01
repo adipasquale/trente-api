@@ -25,6 +25,6 @@ class V1::GuestsController < ApplicationController
   end
 
   def guest_params
-    params.require(:guest).permit(:name, :email, :photo)
+    params.require(:guest).permit(:name, :email, :photo, :browser_uuid)
   end
 end
