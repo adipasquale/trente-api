@@ -40,5 +40,8 @@ module TrenteApi
         resource '*', headers: :any, methods: [:get, :post, :options, :delete]
       end
     end
+
+    I18n.available_locales = [:fr]
+    config.i18n.default_locale = :fr
   end
 end
