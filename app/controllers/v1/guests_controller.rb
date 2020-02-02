@@ -14,6 +14,15 @@ class V1::GuestsController < ApplicationController
   end
 
   def destroy
+    @guest = Guest.find(params[:id])
+    if params[:browser_uuid] != @guest.browser_uuid
+      return render json: {success: false, errors: ['authentication error']}
+    end
+    if @guest.destroy
+      render json: { success: true }
+    else
+      render json: { success: false, errors: [] }
+    end
   end
 
   private
