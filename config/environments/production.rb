@@ -54,6 +54,20 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "trente_api_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp-relay.sendinblue.com',
+    :port => 587,
+    :domain => 'outofscreen.com',
+    :user_name => 'adrien@outofscreen.com',
+    :password => ENV['SENDINBLUE_SMTP_PASSWORD'],
+    :authentication => 'login',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.default_url_options = { :host => "trente.dipasquale.fr" }
+  Rails.application.routes.default_url_options[:host] = 'trente.dipasquale.fr'
+
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
