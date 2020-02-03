@@ -29,7 +29,7 @@ class V1::GuestsController < ApplicationController
 
   def guest_as_json(guest)
     guest.as_json.merge(
-      guest.photo.attached? ? {photoUrl: url_for(guest.photo)} : {}
+      guest.photo.attached? ? {photoUrl: Cloudinary::Utils.cloudinary_url(guest.photo.key, width: 500, height: 500, crop: :fit)} : {}
     )
   end
 
